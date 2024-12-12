@@ -5,9 +5,26 @@ import webbrowser
 from tkinter import PhotoImage
 from PIL import Image, ImageTk
 import os
+import psutil  # Adicionar importação do psutil
+import ctypes  # Adicionar importação do ctypes
+import sys
+
+opened_processes = []
+
+def is_admin():
+    try:
+        return ctypes.windll.shell32.IsUserAnAdmin()
+    except:
+        return False
+
+if not is_admin():
+    # Reexecutar o script como administrador
+    ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)
+    sys.exit()
 
 def open_option1():
-    subprocess.Popen([r'C:\ATS\xTotenGeneric.exe'])
+    proc = subprocess.Popen([r'C:\ATS\xTotenGeneric.exe'])
+    opened_processes.append(proc)
 
 def open_option2():
     webbrowser.open('https://seumotora.contatto.com.br/login')
@@ -30,12 +47,40 @@ def open_option7():
 def close_app():
     root.destroy()
 
+inactivity_timer = None
+
+def close_other_windows():
+    for proc in opened_processes:
+        try:
+            proc.terminate()  # Tentar fechar o processo de forma amigável
+            proc.wait(timeout=5)  # Esperar até 5 segundos para o processo terminar
+        except (psutil.NoSuchProcess, psutil.AccessDenied):
+            pass
+        except psutil.TimeoutExpired:
+            proc.kill()  # Forçar o encerramento se o processo não terminar amigavelmente
+    # Voltar o aplicativo para a tela principal
+    root.deiconify()
+    reset_inactivity_timer()  # Reiniciar o timer após fechar as janelas
+
+def reset_inactivity_timer(event=None):
+    global inactivity_timer
+    if inactivity_timer is not None:
+        root.after_cancel(inactivity_timer)
+    inactivity_timer = root.after(60000, close_other_windows)  # Iniciar após 60 segundos de inatividade
+
 def main():
     global root
     root = tk.Tk()
     root.attributes('-fullscreen', True)
     root.title("Kiosque")
     root.update_idletasks()  # Garantir que a janela esteja completamente inicializada
+
+    # Bind eventos de atividade do usuário para resetar o timer
+    root.bind_all('<Motion>', reset_inactivity_timer)
+    root.bind_all('<KeyPress>', reset_inactivity_timer)
+    root.bind_all('<ButtonPress>', reset_inactivity_timer)
+
+    reset_inactivity_timer()  # Iniciar o timer de inatividade
 
     # Carregar imagem de fundo
     screen_width = root.winfo_screenwidth()

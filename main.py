@@ -44,6 +44,9 @@ def open_option6():
 def open_option7():
     messagebox.showinfo("Option 7", "Esta opção está em desenvolvimento")
 
+def open_option8():
+    messagebox.showinfo("Option 8", "Esta opção está em desenvolvimento")
+
 def close_app():
     root.destroy()
 
@@ -110,6 +113,7 @@ def main():
     img5 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\Checklist.png").resize((350, 350), Image.Resampling.LANCZOS)
     img6 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\Onde.png").resize((350, 350), Image.Resampling.LANCZOS)
     img7 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\manual.png").resize((350, 350), Image.Resampling.LANCZOS)
+    img8 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\nova_opcao.png").resize((350, 350), Image.Resampling.LANCZOS)  # Nova imagem
 
     img1 = ImageTk.PhotoImage(img1)
     img2 = ImageTk.PhotoImage(img2)
@@ -118,6 +122,7 @@ def main():
     img5 = ImageTk.PhotoImage(img5)
     img6 = ImageTk.PhotoImage(img6)
     img7 = ImageTk.PhotoImage(img7)
+    img8 = ImageTk.PhotoImage(img8)  # Nova imagem
 
     # Criar botões com imagens e ajustar tamanho
     btn1 = tk.Button(frame, command=open_option1, image=img1, bd=0, highlightthickness=0, relief="flat", bg="white", activebackground="white")
@@ -141,6 +146,9 @@ def main():
     btn7 = tk.Button(frame, command=open_option7, image=img7, bd=0, highlightthickness=0, relief="flat", bg="white", activebackground="white")
     btn7.grid(row=2, column=1)
 
+    btn8 = tk.Button(frame, command=open_option8, image=img8, bd=0, highlightthickness=0, relief="flat", bg="white", activebackground="white")  # Novo botão
+    btn8.grid(row=2, column=2)  # Ajustar a posição conforme necessário
+
     # Botão oculto para fechar o aplicativo
     hidden_btn = tk.Button(root, text="", command=close_app, width=1, height=1, bd=0, highlightthickness=0, relief="flat", bg="white", activebackground="white")
     hidden_btn.place(x=screen_width - 20, y=10)
@@ -153,6 +161,7 @@ def main():
     btn5.image = img5
     btn6.image = img6
     btn7.image = img7
+    btn8.image = img8  # Nova imagem
     bg_label.image = bg_image
 
     root.mainloop()

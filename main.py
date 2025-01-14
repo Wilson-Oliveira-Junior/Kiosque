@@ -106,14 +106,14 @@ def main():
     frame.pack(expand=True)
     
     # Carregar e redimensionar imagens
-    img1 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\ats.png").resize((350, 350), Image.Resampling.LANCZOS)
-    img2 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\seu motora.png").resize((350, 350), Image.Resampling.LANCZOS)
-    img3 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\CAM.png").resize((350, 350), Image.Resampling.LANCZOS)
-    img4 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\CTE.png").resize((350, 350), Image.Resampling.LANCZOS)
-    img5 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\Checklist.png").resize((350, 350), Image.Resampling.LANCZOS)
-    img6 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\Onde.png").resize((350, 350), Image.Resampling.LANCZOS)
-    img7 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\manual.png").resize((350, 350), Image.Resampling.LANCZOS)
-    img8 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\nova_opcao.png").resize((350, 350), Image.Resampling.LANCZOS)  # Nova imagem
+    img1 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\ats.png").resize((200, 200), Image.Resampling.LANCZOS)
+    img2 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\seu motora.png").resize((200, 200), Image.Resampling.LANCZOS)
+    img3 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\CAM.png").resize((200, 200), Image.Resampling.LANCZOS)
+    img4 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\CTE.png").resize((200, 200), Image.Resampling.LANCZOS)
+    img5 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\Checklist.png").resize((200, 200), Image.Resampling.LANCZOS)
+    img6 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\Onde.png").resize((200, 200), Image.Resampling.LANCZOS)
+    img7 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\manual.png").resize((200, 200), Image.Resampling.LANCZOS)
+    img8 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\Regulamento.png").resize((200, 200), Image.Resampling.LANCZOS) 
 
     img1 = ImageTk.PhotoImage(img1)
     img2 = ImageTk.PhotoImage(img2)
@@ -122,32 +122,32 @@ def main():
     img5 = ImageTk.PhotoImage(img5)
     img6 = ImageTk.PhotoImage(img6)
     img7 = ImageTk.PhotoImage(img7)
-    img8 = ImageTk.PhotoImage(img8)  # Nova imagem
+    img8 = ImageTk.PhotoImage(img8)  
 
     # Criar botões com imagens e ajustar tamanho
     btn1 = tk.Button(frame, command=open_option1, image=img1, bd=0, highlightthickness=0, relief="flat", bg="white", activebackground="white")
-    btn1.grid(row=0, column=0)
+    btn1.grid(row=0, column=0, padx=20, pady=20)
 
     btn2 = tk.Button(frame, command=open_option2, image=img2, bd=0, highlightthickness=0, relief="flat", bg="white", activebackground="white")
-    btn2.grid(row=0, column=1)
+    btn2.grid(row=0, column=1, padx=20, pady=20)
 
     btn3 = tk.Button(frame, command=open_option3, image=img3, bd=0, highlightthickness=0, relief="flat", bg="white", activebackground="white")
-    btn3.grid(row=0, column=2)
+    btn3.grid(row=0, column=2, padx=20, pady=20)
 
     btn4 = tk.Button(frame, command=open_option4, image=img4, bd=0, highlightthickness=0, relief="flat", bg="white", activebackground="white")
-    btn4.grid(row=1, column=0)
+    btn4.grid(row=1, column=0, padx=20, pady=20)
 
     btn5 = tk.Button(frame, command=open_option5, image=img5, bd=0, highlightthickness=0, relief="flat", bg="white", activebackground="white")
-    btn5.grid(row=1, column=1)
+    btn5.grid(row=1, column=1, padx=20, pady=20)
 
     btn6 = tk.Button(frame, command=open_option6, image=img6, bd=0, highlightthickness=0, relief="flat", bg="white", activebackground="white")
-    btn6.grid(row=1, column=2)
+    btn6.grid(row=1, column=2, padx=20, pady=20)
 
     btn7 = tk.Button(frame, command=open_option7, image=img7, bd=0, highlightthickness=0, relief="flat", bg="white", activebackground="white")
-    btn7.grid(row=2, column=1)
+    btn7.grid(row=2, column=0, padx=20, pady=20)  
 
     btn8 = tk.Button(frame, command=open_option8, image=img8, bd=0, highlightthickness=0, relief="flat", bg="white", activebackground="white")  # Novo botão
-    btn8.grid(row=2, column=2)  # Ajustar a posição conforme necessário
+    btn8.grid(row=2, column=1, padx=20, pady=20)  
 
     # Botão oculto para fechar o aplicativo
     hidden_btn = tk.Button(root, text="", command=close_app, width=1, height=1, bd=0, highlightthickness=0, relief="flat", bg="white", activebackground="white")
@@ -161,7 +161,7 @@ def main():
     btn5.image = img5
     btn6.image = img6
     btn7.image = img7
-    btn8.image = img8  # Nova imagem
+    btn8.image = img8  
     bg_label.image = bg_image
 
     root.mainloop()

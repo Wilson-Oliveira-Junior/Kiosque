@@ -33,7 +33,7 @@ def open_option3():
     webbrowser.open('https://seumotora.contatto.com.br/pesquisa')
 
 def open_option4():
-    messagebox.showinfo('https://www.detran.sp.gov.br/wps/portal/portaldetran/cidadao/habilitacao/fichaservico/pesquisaPontuacaoCNH/#modal')
+    webbrowser.open('https://www.detran.sp.gov.br/wps/portal/portaldetran/cidadao/habilitacao/fichaservico/consultaPontos')
 
 def open_option5():
     messagebox.showinfo("Option 5", "Esta opção está em desenvolvimento")
@@ -45,7 +45,15 @@ def open_option7():
     messagebox.showinfo("Option 7", "Esta opção está em desenvolvimento")
 
 def open_option8():
-    messagebox.showinfo("Option 8", "Esta opção está em desenvolvimento")
+    pdf_path = r"C:\Users\kiosk\Documents\kiosque\Manual do Motorista - IMP.pdf"  
+    adobe_reader_path = r"C:\Program Files (x86)\Adobe\Acrobat Reader DC\Reader\AcroRd32.exe"
+    if os.path.exists(pdf_path):
+        if os.path.exists(adobe_reader_path):
+            subprocess.Popen([adobe_reader_path, '/A', 'fullscreen=yes', pdf_path])
+        else:
+            subprocess.Popen([pdf_path], shell=True)
+    else:
+        messagebox.showerror("Erro", f"O arquivo {pdf_path} não foi encontrado.")
 
 def open_option9():
     messagebox.showinfo("Option 9", "Esta opção está em desenvolvimento")
@@ -119,7 +127,6 @@ def main():
     img8 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\manual.png").resize((200, 200), Image.Resampling.LANCZOS)
     img9 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\Regulamento.png").resize((200, 200), Image.Resampling.LANCZOS) 
      
-
     img1 = ImageTk.PhotoImage(img1)
     img2 = ImageTk.PhotoImage(img2)
     img3 = ImageTk.PhotoImage(img3)
@@ -156,11 +163,11 @@ def main():
     btn8.grid(row=2, column=1, padx=20, pady=20)  
 
     btn9 = tk.Button(frame, command=open_option9, image=img9, bd=0, highlightthickness=0, relief="flat", bg="white", activebackground="white")  
-    btn9.grid(row=2, column=1, padx=20, pady=20) 
+    btn9.grid(row=2, column=2, padx=20, pady=20) 
 
     # Botão oculto para fechar o aplicativo
     hidden_btn = tk.Button(root, text="", command=close_app, width=1, height=1, bd=0, highlightthickness=0, relief="flat", bg="white", activebackground="white")
-    hidden_btn.place(x=screen_width - 20, y=10)
+    hidden_btn.place(x=20, y=10)  # Mover para o lado esquerdo da tela
 
     # Manter referências às imagens
     btn1.image = img1

@@ -5,8 +5,8 @@ import webbrowser
 from tkinter import PhotoImage
 from PIL import Image, ImageTk
 import os
-import psutil  # Adicionar importação do psutil
-import ctypes  # Adicionar importação do ctypes
+import psutil 
+import ctypes  
 import sys
 
 opened_processes = []
@@ -33,7 +33,7 @@ def open_option3():
     webbrowser.open('https://seumotora.contatto.com.br/pesquisa')
 
 def open_option4():
-    messagebox.showinfo("Option 4", "Esta opção está em desenvolvimento")
+    messagebox.showinfo('https://www.detran.sp.gov.br/wps/portal/portaldetran/cidadao/habilitacao/fichaservico/pesquisaPontuacaoCNH/#modal')
 
 def open_option5():
     messagebox.showinfo("Option 5", "Esta opção está em desenvolvimento")
@@ -46,6 +46,9 @@ def open_option7():
 
 def open_option8():
     messagebox.showinfo("Option 8", "Esta opção está em desenvolvimento")
+
+def open_option9():
+    messagebox.showinfo("Option 9", "Esta opção está em desenvolvimento")
 
 def close_app():
     root.destroy()
@@ -109,11 +112,13 @@ def main():
     img1 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\ats.png").resize((200, 200), Image.Resampling.LANCZOS)
     img2 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\seu motora.png").resize((200, 200), Image.Resampling.LANCZOS)
     img3 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\CAM.png").resize((200, 200), Image.Resampling.LANCZOS)
-    img4 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\CTE.png").resize((200, 200), Image.Resampling.LANCZOS)
-    img5 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\Checklist.png").resize((200, 200), Image.Resampling.LANCZOS)
-    img6 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\Onde.png").resize((200, 200), Image.Resampling.LANCZOS)
-    img7 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\manual.png").resize((200, 200), Image.Resampling.LANCZOS)
-    img8 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\Regulamento.png").resize((200, 200), Image.Resampling.LANCZOS) 
+    img4 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\Detran.png").resize((200, 200), Image.Resampling.LANCZOS)
+    img5 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\CTE.png").resize((200, 200), Image.Resampling.LANCZOS)
+    img6 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\Checklist.png").resize((200, 200), Image.Resampling.LANCZOS)
+    img7 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\Onde.png").resize((200, 200), Image.Resampling.LANCZOS)
+    img8 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\manual.png").resize((200, 200), Image.Resampling.LANCZOS)
+    img9 = Image.open(r"C:\Users\kiosk\Pictures\imagens kiosque\Regulamento.png").resize((200, 200), Image.Resampling.LANCZOS) 
+     
 
     img1 = ImageTk.PhotoImage(img1)
     img2 = ImageTk.PhotoImage(img2)
@@ -123,6 +128,7 @@ def main():
     img6 = ImageTk.PhotoImage(img6)
     img7 = ImageTk.PhotoImage(img7)
     img8 = ImageTk.PhotoImage(img8)  
+    img9 = ImageTk.PhotoImage(img9) 
 
     # Criar botões com imagens e ajustar tamanho
     btn1 = tk.Button(frame, command=open_option1, image=img1, bd=0, highlightthickness=0, relief="flat", bg="white", activebackground="white")
@@ -146,8 +152,11 @@ def main():
     btn7 = tk.Button(frame, command=open_option7, image=img7, bd=0, highlightthickness=0, relief="flat", bg="white", activebackground="white")
     btn7.grid(row=2, column=0, padx=20, pady=20)  
 
-    btn8 = tk.Button(frame, command=open_option8, image=img8, bd=0, highlightthickness=0, relief="flat", bg="white", activebackground="white")  # Novo botão
+    btn8 = tk.Button(frame, command=open_option8, image=img8, bd=0, highlightthickness=0, relief="flat", bg="white", activebackground="white") 
     btn8.grid(row=2, column=1, padx=20, pady=20)  
+
+    btn9 = tk.Button(frame, command=open_option9, image=img9, bd=0, highlightthickness=0, relief="flat", bg="white", activebackground="white")  
+    btn9.grid(row=2, column=1, padx=20, pady=20) 
 
     # Botão oculto para fechar o aplicativo
     hidden_btn = tk.Button(root, text="", command=close_app, width=1, height=1, bd=0, highlightthickness=0, relief="flat", bg="white", activebackground="white")
@@ -162,6 +171,7 @@ def main():
     btn6.image = img6
     btn7.image = img7
     btn8.image = img8  
+    btn9.image = img9
     bg_label.image = bg_image
 
     root.mainloop()

@@ -72,6 +72,12 @@ def close_other_windows():
             pass
         except psutil.TimeoutExpired:
             proc.kill()  # Forçar o encerramento se o processo não terminar amigavelmente
+    # Garantir que todos os processos foram encerrados
+    for proc in opened_processes:
+        try:
+            proc.wait(timeout=20)
+        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.TimeoutExpired):
+            pass
     # Voltar o aplicativo para a tela principal
     root.deiconify()
     reset_inactivity_timer()  # Reiniciar o timer após fechar as janelas

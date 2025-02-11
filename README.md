@@ -37,6 +37,22 @@ The Kiosque project is a Python-based application designed to run on a kiosk sys
     python main.py
     ```
 
+## Creating an Executable
+
+To create an executable from the `main.py` script, follow these steps:
+
+1. Install PyInstaller:
+    ```sh
+    pip install pyinstaller
+    ```
+
+2. Navigate to the directory containing `main.py` and run:
+    ```sh
+    pyinstaller --onefile --noconsole main.py
+    ```
+
+3. The executable will be created in the `dist` directory.
+
 ## File Structure
 
 ```

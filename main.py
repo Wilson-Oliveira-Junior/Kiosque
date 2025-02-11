@@ -67,7 +67,7 @@ def close_other_windows():
     for proc in opened_processes:
         try:
             proc.terminate()  # Tentar fechar o processo de forma amigável
-            proc.wait(timeout=5)  # Esperar até 5 segundos para o processo terminar
+            proc.wait(timeout=40)  # Esperar até 40 segundos para o processo terminar
         except (psutil.NoSuchProcess, psutil.AccessDenied):
             pass
         except psutil.TimeoutExpired:
